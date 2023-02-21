@@ -1,0 +1,324 @@
+commands: 
+    - command:
+        description: Display endpoint information about the master and services in the cluster
+        cmd: kubectl cluster-info
+
+    - command:
+        description: Display the Kubernetes version running on the client and server
+        cmd: kubectl version
+
+    - command:
+        description: Get the configuration of the cluster
+        cmd: kubectl config view
+
+    - command:
+        description: List the API resources that are available
+        cmd: kubectl api-resources
+
+    - command:
+        description: List the API versions that are available
+        cmd: kubectl api-versions
+
+    - command:
+        description: List everything
+        cmd: kubectl get all --all-namespaces
+
+    - command:
+        description: List one or more daemonsets
+        cmd: kubectl get daemonset
+
+    - command:
+        description: Edit and update the definition of one or more daemonset
+        cmd: kubectl edit daemonset <daemonset_name>
+
+    - command:
+        description: Delete a daemonset
+        cmd: kubectl delete daemonset <daemonset_name>
+
+    - command:
+        description: Create a new daemonset
+        cmd: kubectl create daemonset <daemonset_name>
+
+    - command:
+        description: Manage the rollout of a daemonset
+        cmd: kubectl rollout daemonset
+
+    - command:
+        description: Display the detailed state of daemonsets within a namespace
+        cmd: kubectl describe ds <daemonset_name> -n <namespace_name>
+
+    - command:
+        description: List one or more deployments
+        cmd: kubectl get deployment
+
+    - command:
+        description: Display the detailed state of one or more deployments
+        cmd: kubectl describe deployment <deployment_name>
+
+    - command:
+        description: Edit and update the definition of one or more deployment on the server
+        cmd: kubectl edit deployment <deployment_name>
+
+    - command:
+        description: Create one a new deployment
+        cmd: kubectl create deployment <deployment_name>
+
+    - command:
+        description: Delete deployments
+        cmd: kubectl delete deployment <deployment_name>
+
+    - command:
+        description: See the rollout status of a deployment
+        cmd: kubectl rollout status deployment <deployment_name>
+
+    - command:
+        description: List recent events for all resources in the system
+        cmd: kubectl get events
+
+    - command:
+        description: List Warnings only
+        cmd: kubectl get events --field-selector type=Warning
+
+    - command:
+        description: List events but exclude Pod events
+        cmd: kubectl get events --field-selector involvedObject.kind!=Pod
+
+    - command:
+        description: Pull events for a single node with a specific name
+        cmd: kubectl get events --field-selector involvedObject.kind=Node, involvedObject.name=<node_name>
+
+    - command:
+        description: Filter out normal events from a list of events
+        cmd: kubectl get events --field-selector type!=Normal
+
+    - command:
+        description: Print the logs for a pod
+        cmd: kubectl logs <pod_name>
+
+    - command:
+        description: Print the logs for the last hour for a pod
+        cmd: kubectl logs --since=1h <pod_name>
+
+    - command:
+        description: Get the most recent 20 lines of logs
+        cmd: kubectl logs --tail=20 <pod_name>
+
+    - command:
+        description: Get logs from a service and optionally select which container
+        cmd: kubectl logs -f <service_name> [-c <$container>]
+
+    - command:
+        description: Print the logs for a pod and follow new logs
+        cmd: kubectl logs -f <pod_name>
+
+    - command:
+        description: Print the logs for a container in a pod
+        cmd: kubectl logs -c <container_name> <pod_name>
+
+    - command:
+        description: Output the logs for a pod into a file named ‘pod.log’
+        cmd: kubectl logs <pod_name> pod.log
+
+    - command:
+        description: View the logs for a previously failed pod
+        cmd: kubectl logs --previous <pod_name>
+
+    - command:
+        description: Apply a configuration to an object by filename or stdin. Overrides the existing configuration.
+        cmd: kubectl apply -f manifest_file.yaml
+
+    - command:
+        description: Create objects
+        cmd: kubectl create -f manifest_file.yaml
+
+    - command:
+        description: Create objects in all manifest files in a directory
+        cmd: kubectl create -f ./dir
+
+    - command:
+        description: Create objects from a URL
+        cmd: kubectl create -f ‘url’
+
+    - command:
+        description: Delete an object
+        cmd: kubectl delete -f manifest_file.yaml
+
+    - command:
+        description: Create namespace <name>
+        cmd: kubectl create namespace <namespace_name>
+
+    - command:
+        description: List one or more namespaces
+        cmd: kubectl get namespace <namespace_name>
+
+    - command:
+        description: Display the detailed state of one or more namespace
+        cmd: kubectl describe namespace <namespace_name>
+
+    - command:
+        description: Delete a namespace
+        cmd: kubectl delete namespace <namespace_name>
+
+    - command:
+        description: Edit and update the definition of a namespace
+        cmd: kubectl edit namespace <namespace_name>
+
+    - command:
+        description: Display Resource (CPU/Memory/Storage) usage for a namespace
+        cmd: kubectl top namespace <namespace_name>
+
+    - command:
+        description: Update the taints on one or more nodes
+        cmd: kubectl taint node <node_name>
+
+    - command:
+        description: List one or more nodes
+        cmd: kubectl get node
+
+    - command:
+        description: Delete a node or multiple nodes
+        cmd: kubectl delete node <node_name>
+
+    - command:
+        description: Display Resource usage (CPU/Memory/Storage) for nodes
+        cmd: kubectl top node
+
+    - command:
+        description: Resource allocation per node
+        cmd: kubectl describe nodes | grep Allocated -A 5
+
+    - command:
+        description: Pods running on a node
+        cmd: kubectl get pods -o wide | grep <node_name>
+
+    - command:
+        description: Annotate a node
+        cmd: kubectl annotate node <node_name>
+
+    - command:
+        description: Mark a node as unschedulable
+        cmd: kubectl cordon node <node_name>
+
+    - command:
+        description: Mark node as schedulable
+        cmd: kubectl uncordon node <node_name>
+
+    - command:
+        description: Drain a node in preparation for maintenance
+        cmd: kubectl drain node <node_name>
+
+    - command:
+        description: Add or update the labels of one or more nodes
+        cmd: kubectl label node
+
+    - command:
+        description: List one or more pods
+        cmd: kubectl get pod
+
+    - command:
+        description: Delete a pod
+        cmd: kubectl delete pod <pod_name>
+
+    - command:
+        description: Display the detailed state of a pods
+        cmd: kubectl describe pod <pod_name>
+
+    - command:
+        description: Create a pod
+        cmd: kubectl create pod <pod_name>
+
+    - command:
+        description: Execute a command against a container in a pod
+        cmd: kubectl exec <pod_name> -c <container_name> <command>
+
+    - command:
+        description: Get interactive shell on a a single-container pod
+        cmd: kubectl exec -it <pod_name> /bin/sh
+
+    - command:
+        description: Display Resource usage (CPU/Memory/Storage) for pods
+        cmd: kubectl top pod
+
+    - command:
+        description: Add or update the annotations of a pod
+        cmd: kubectl annotate pod <pod_name> <annotation>
+
+    - command:
+        description: Add or update the label of a pod
+        cmd: kubectl label pod <pod_name>
+
+    - command:
+        description: List the replication controllers
+        cmd: kubectl get rc
+
+    - command:
+        description: List the replication controllers by namespace
+        cmd: kubectl get rc --namespace=”<namespace_name>”
+
+    - command:
+        description: List ReplicaSets
+        cmd: kubectl get replicasets
+
+    - command:
+        description: Display the detailed state of one or more ReplicaSets
+        cmd: kubectl describe replicasets <replicaset_name>
+
+    - command:
+        description: Scale a ReplicaSet
+        cmd: kubectl scale --replicas=[x] 
+
+    - command:
+        description: Create a secret
+        cmd: kubectl create secret
+
+    - command:
+        description: List secrets
+        cmd: kubectl get secrets
+
+    - command:
+        description: List details about secrets
+        cmd: kubectl describe secrets
+
+    - command:
+        description: Delete a secret
+        cmd: kubectl delete secret <secret_name>
+
+    - command:
+        description: List one or more services
+        cmd: kubectl get services
+
+    - command:
+        description: Display the detailed state of a service
+        cmd: kubectl describe services
+
+    - command:
+        description: Expose a replication controller, service, deployment or pod as a new Kubernetes service
+        cmd: kubectl expose deployment [deployment_name]
+
+    - command:
+        description: Edit and update the definition of one or more services
+        cmd: kubectl edit services
+
+    - command:
+        description: List service accounts
+        cmd: kubectl get serviceaccounts
+
+    - command:
+        description: Display the detailed state of one or more service accounts
+        cmd: kubectl describe serviceaccounts
+
+    - command:
+        description: Replace a service account
+        cmd: kubectl replace serviceaccount
+
+    - command:
+        description: Delete a service account
+        cmd: kubectl delete serviceaccount <service_account_name>
+
+    - command:
+        description: List StatefulSet
+        cmd: kubectl get statefulset
+
+    - command:
+        description: Delete StatefulSet only (not pods)
+        cmd: kubectl delete statefulset/[stateful_set_name] --cascade=false
